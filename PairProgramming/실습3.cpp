@@ -1,3 +1,7 @@
+/*
+   코드 작성(참여 인원) : 201902697 백유미, 201902704 손지민
+*/
+
 #include <iostream>
 #define TALL 0
 #define GRANDE 1
@@ -20,6 +24,7 @@ class CodimentDecorator : public Beverage {
 
 class DarkRoast : public Beverage {
 private:
+    int size;
     Beverage* beverage;
 public:
     DarkRoast(int size);
@@ -300,36 +305,39 @@ void display(Beverage* beverage) {
 }
 
 void main() {
-    //에스프레소
+    //에스프레소 (그란데 사이즈)
     Beverage* beverage1 = new Espresso(GRANDE);
     display(beverage1);
 
-    //다크로스트 커피 + 모카 + 모카 + 휘핑크림
+    //다크로스트 커피 + 모카 + 모카 + 휘핑크림 (톨 사이즈)
     Beverage* beverage2 = new DarkRoast(TALL);
     beverage2 = new Mocha(beverage2);
     beverage2 = new Mocha(beverage2);
     beverage2 = new Whip(beverage2);
     display(beverage2);
 
-    //하우스 블렌드 커피 + 두유 + 모카 + 휘핑크림
+    //하우스 블렌드 커피 + 두유 + 모카 + 휘핑크림 (벤티 사이즈)
     Beverage* beverage3 = new HouseBlend(VENTI);
     beverage3 = new Soy(beverage3);
     beverage3 = new Mocha(beverage3);
     beverage3 = new Whip(beverage3);
     display(beverage3);
 
+    //다크로스트 + 우유 + 모카 + 우유 (톨 사이즈)
     Beverage* bever4 = new DarkRoast(TALL);
     bever4 = new Milk(bever4);
     bever4 = new Mocha(bever4);
     bever4 = new Milk(bever4);
     display(bever4);
 
+    //에스프레소 + 우유 3번 (그란데 사이즈)
     Beverage* bever5 = new Espresso(GRANDE);
     bever5 = new Milk(bever5);
     bever5 = new Milk(bever5);
     bever5 = new Milk(bever5);
     display(bever5);
 
+    //하우스 블렌드 + 우유 + 모카 + 두유 + 휘핑크림 (벤티 사이즈)
     Beverage* bever6 = new HouseBlend(VENTI);
     bever6 = new Milk(bever6);
     bever6 = new Mocha(bever6);
